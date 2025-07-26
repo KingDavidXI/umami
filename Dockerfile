@@ -13,6 +13,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+ARG DATABASE_URL
 ARG DATABASE_TYPE
 ARG BASE_PATH
 
@@ -28,7 +29,6 @@ FROM node:22-alpine AS runner
 WORKDIR /app
 
 ARG NODE_OPTIONS
-ARG DATABASE_URL
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
